@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 공부</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app2">
+        <span v-bind:title="message">
+            내 동적 바인딩 제목을 보려면 마우스를 내 위에 몇 초 동안 가져가세요!
+        </span>
+    </div>
+
+    <div id="app3">
+        {{ nextYear('안냥하세여') }}
+    </div>
+
+    <div id="app4" v-bind:title="person.name">
+        {{ nextYear() }}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: "안녕하세요!"
+            }
+        })
+
+        new Vue ({
+            el: '#app2',
+            data: {
+                message: `이 페이지는 ${new Date()} 에 로드되었습니다.`
+            }
+        })
+
+        new Vue ({
+            el: '#app3',
+            data: {
+                person: {
+                    name: 'choi',
+                    age: 20
+                }
+            },
+            methods: {
+                nextYear: function(){
+                    return `${this.person.name} 은 내년에 ${this.person.age + 1} 살 입니다.`;
+                }
+            }
+        })
+
+        new Vue ({
+            el: '#app4',
+            data: {
+                person: {
+                    name: hea,
+                    age: 25
+                }
+            },
+            methods: {
+                nextYear(){
+                    return `${this.person.name} 는 내년에 ${this.person.age + 1} 이 됩니다.`
+                }
+            }
+        })
+    </script>
+</body>
+</html>
